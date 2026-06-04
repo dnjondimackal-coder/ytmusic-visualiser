@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    :root { --luna: #245edb; --luna2: #3a73e8; }
+    html, body { margin: 0; }
+    body {
+      width: 260px;
+      font: 12px "Tahoma", "Segoe UI", sans-serif;
+      background: #ece9d8;
+      color: #1a1a1a;
+      user-select: none;
+    }
+    .titlebar {
+      background: linear-gradient(180deg, #3a73e8 0%, #245edb 45%, #1c50c9 100%);
+      color: #fff;
+      font-weight: bold;
+      padding: 6px 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+      border-bottom: 1px solid #173da0;
+    }
+    .titlebar .dot {
+      width: 14px; height: 14px; border-radius: 3px;
+      background: radial-gradient(circle at 30% 30%, #7CFC00, #0a8a00);
+      box-shadow: 0 0 6px #7CFC00;
+    }
+    .body { padding: 12px; display: flex; flex-direction: column; gap: 12px; }
+    .row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .row label { flex: 0 0 auto; }
+    .row input[type=range] { flex: 1 1 auto; }
+    .val { font-variant-numeric: tabular-nums; width: 34px; text-align: right; color: #444; }
+    select, button {
+      font: 12px Tahoma, sans-serif;
+      border: 1px solid #8a9bbd;
+      border-radius: 3px;
+      background: linear-gradient(180deg, #fff, #e7ecf6);
+      padding: 3px 6px;
+    }
+    button {
+      cursor: pointer;
+      background: linear-gradient(180deg, #fefefe, #d6e2f7);
+      padding: 6px;
+      font-weight: bold;
+    }
+    button:active { background: linear-gradient(180deg, #c9d8f2, #b6cbef); }
+    .switch { display: flex; align-items: center; gap: 6px; font-weight: bold; }
+    .sub { font-size: 11px; color: #555; }
+    fieldset { border: 1px solid #c3c0ad; border-radius: 4px; margin: 0; padding: 8px; }
+    legend { font-weight: bold; padding: 0 4px; color: #234; }
+    .minirow { display: flex; gap: 6px; align-items: center; }
+    input[type=number] { width: 46px; font: 12px Tahoma; }
+  </style>
+</head>
+<body>
+  <div class="titlebar"><span class="dot"></span> WinXP Visualizer</div>
+  <div class="body">
+
+    <div class="row switch">
+      <label><input type="checkbox" id="enabled"> Enabled</label>
+    </div>
+
+    <div class="row">
+      <label for="mode">Visualization</label>
+      <select id="mode">
+        <option value="random">Random (auto-switch)</option>
+        <option value="bars">Bars</option>
+        <option value="waves">Waves</option>
+        <option value="ambience">Ambience</option>
+        <option value="spikes">Spikes</option>
+        <option value="battery">Battery</option>
+        <option value="alchemy">Alchemy</option>
+      </select>
+    </div>
+
+    <div class="row">
+      <label for="intensity">Intensity</label>
+      <input type="range" id="intensity" min="0.4" max="2" step="0.05">
+      <span class="val" id="intensityV"></span>
+    </div>
+
+    <div class="row">
+      <label for="opacity">Cover</label>
+      <input type="range" id="opacity" min="0.3" max="1" step="0.05">
+      <span class="val" id="opacityV"></span>
+    </div>
+
+    <fieldset>
+      <legend>Auto-switch (sec)</legend>
+      <div class="minirow">
+        <label for="switchMin">min</label>
+        <input type="number" id="switchMin" min="4" max="120">
+        <label for="switchMax">max</label>
+        <input type="number" id="switchMax" min="5" max="240">
+      </div>
+    </fieldset>
+
+    <div class="row">
+      <label><input type="checkbox" id="showName"> Show name on switch</label>
+    </div>
+
+    <button id="next">⏭  Skip to next visualization</button>
+    <div class="sub">Open <b>music.youtube.com</b> and play a song. Changes apply live.</div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "WinXP Visualizer for YouTube Music",
+  "version": "1.0.0",
+  "description": "Replaces the YouTube Music album art with randomly-changing Windows XP Media Player-style audio visualizations.",
+  "icons": { "48": "icon.svg", "96": "icon.svg" },
+  "permissions": ["storage"],
+  "content_scripts": [
+    {
+      "matches": ["https://music.youtube.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "WinXP Visualizer",
+    "default_popup": "popup.html",
+    "default_icon": { "48": "icon.svg" }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "winxp-visualizer@local.dev",
+      "strict_min_version": "115.0"
+    }
+  }
+}
